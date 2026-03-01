@@ -187,34 +187,42 @@
       padding: 1.6rem; position: relative; overflow: hidden;
       transition: transform .25s, box-shadow .25s;
     }
-    .skill-cat:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--glow);
-    }
+    .skill-cat:hover { transform: translateY(-4px); box-shadow: var(--glow); }
     .skill-cat::before {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(0,212,255,.04), transparent);
       pointer-events: none;
     }
-    .skill-cat-icon { font-size: 2rem; margin-bottom: .8rem; }
+    /* colored top accent bar per category */
+    .skill-cat::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+    .skill-cat.cat-cloud::after    { background: linear-gradient(90deg,#00d4ff,#0099cc); }
+    .skill-cat.cat-platform::after { background: linear-gradient(90deg,#7b61ff,#5b41df); }
+    .skill-cat.cat-sre::after      { background: linear-gradient(90deg,#00ff88,#00cc66); }
+    .skill-cat.cat-iac::after      { background: linear-gradient(90deg,#ff9500,#e67e00); }
+    .skill-cat.cat-cicd::after     { background: linear-gradient(90deg,#ff4d6d,#cc3355); }
+    .skill-cat.cat-monitor::after  { background: linear-gradient(90deg,#f0c040,#d4a820); }
+    .skill-cat.cat-script::after   { background: linear-gradient(90deg,#00d4ff,#7b61ff); }
+    .skill-cat.cat-security::after { background: linear-gradient(90deg,#ff6b35,#e55225); }
+    .skill-cat.cat-os::after       { background: linear-gradient(90deg,#aaa,#666); }
+
+    .skill-cat-header { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+    .skill-cat-icon { font-size: 1.7rem; }
     .skill-cat-title {
-      font-size: .8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .1em; color: var(--accent); margin-bottom: 1rem;
+      font-size: .78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--accent);
     }
     .skill-tag {
       display: inline-block;
-      background: rgba(0,212,255,.08);
-      border: 1px solid rgba(0,212,255,.2);
+      background: rgba(0,212,255,.07);
+      border: 1px solid rgba(0,212,255,.18);
       color: var(--text);
-      font-size: .78rem; padding: .3rem .75rem;
-      border-radius: 50px; margin: .25rem .2rem;
+      font-size: .76rem; padding: .28rem .7rem;
+      border-radius: 50px; margin: .22rem .18rem;
       transition: all .2s;
     }
-    .skill-tag:hover {
-      background: rgba(0,212,255,.18);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .skill-tag:hover { background: rgba(0,212,255,.18); border-color: var(--accent); color: var(--accent); }
+    .skill-tag.hot   { border-color: rgba(0,255,136,.3);  color: var(--accent3); background: rgba(0,255,136,.06); }
+    .skill-tag.purple{ border-color: rgba(123,97,255,.3); color: var(--accent2); background: rgba(123,97,255,.07); }
 
     /* ─── Experience Timeline ───────────────────────────── */
     .timeline { position: relative; padding-left: 2rem; }
@@ -470,8 +478,8 @@
       <span class="label">Years Experience</span>
     </div>
     <div class="stat-item">
-      <span class="num" data-target="10" data-suffix="M+ Users">0</span>
-      <span class="label">Monthly Users Supported</span>
+      <span class="num" data-target="2" data-suffix="">0</span>
+      <span class="label">AWS Certifications</span>
     </div>
     <div class="stat-item">
       <span class="num" data-target="99.99" data-suffix="%" data-decimals="2">0</span>
@@ -482,8 +490,8 @@
       <span class="label">Faster Release Cycles</span>
     </div>
     <div class="stat-item">
-      <span class="num" data-target="100" data-suffix="+">0</span>
-      <span class="label">Microservices Managed</span>
+      <span class="num" data-target="3" data-suffix="">0</span>
+      <span class="label">Enterprise Clients</span>
     </div>
     <div class="stat-item">
       <span class="num" data-target="40" data-suffix="%">0</span>
@@ -500,89 +508,120 @@
     <p class="section-sub reveal">A broad, battle-tested stack built across production environments at scale.</p>
 
     <div class="skills-categories">
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">☁️</div>
-        <div class="skill-cat-title">Cloud Platform — AWS</div>
+
+      <div class="skill-cat cat-cloud reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">☁️</span><span class="skill-cat-title">Cloud Platform — AWS</span></div>
         <div>
-          <span class="skill-tag">EC2</span><span class="skill-tag">EKS</span><span class="skill-tag">Lambda</span>
-          <span class="skill-tag">RDS</span><span class="skill-tag">S3</span><span class="skill-tag">VPC</span>
-          <span class="skill-tag">IAM</span><span class="skill-tag">CloudWatch</span><span class="skill-tag">CloudTrail</span>
-          <span class="skill-tag">ALB</span><span class="skill-tag">ASG</span><span class="skill-tag">WAF</span>
-          <span class="skill-tag">Route 53</span><span class="skill-tag">DynamoDB</span><span class="skill-tag">ECS</span>
-          <span class="skill-tag">Fargate</span><span class="skill-tag">CodePipeline</span><span class="skill-tag">EBS</span>
-          <span class="skill-tag">EFS</span><span class="skill-tag">VPN</span>
+          <span class="skill-tag hot">EC2</span><span class="skill-tag hot">EKS</span><span class="skill-tag hot">Lambda</span>
+          <span class="skill-tag">RDS</span><span class="skill-tag hot">S3</span>
+          <span class="skill-tag hot">VPC</span><span class="skill-tag hot">IAM</span><span class="skill-tag">CloudWatch</span>
+          <span class="skill-tag">CloudTrail</span><span class="skill-tag">ALB</span><span class="skill-tag">ASG</span>
+          <span class="skill-tag">WAF</span><span class="skill-tag">Route 53</span><span class="skill-tag">DynamoDB</span>
+          <span class="skill-tag">ECS</span><span class="skill-tag">Fargate</span><span class="skill-tag">CodePipeline</span>
+          <span class="skill-tag">EBS</span><span class="skill-tag">EFS</span><span class="skill-tag">VPN</span>
+          <span class="skill-tag">Elastic Beanstalk</span><span class="skill-tag">CloudFront</span>
+          <span class="skill-tag">SNS / SQS</span><span class="skill-tag">Secrets Manager</span>
         </div>
       </div>
 
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">🐳</div>
-        <div class="skill-cat-title">Container Orchestration</div>
+      <div class="skill-cat cat-platform reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🏗️</span><span class="skill-cat-title">Platform Engineering</span></div>
         <div>
-          <span class="skill-tag">Kubernetes / EKS</span><span class="skill-tag">Docker</span>
-          <span class="skill-tag">Helm</span><span class="skill-tag">Clusters & Nodes</span>
-          <span class="skill-tag">Pods & Services</span><span class="skill-tag">Deployments</span>
-          <span class="skill-tag">Ingress</span><span class="skill-tag">Docker Hub</span>
+          <span class="skill-tag purple hot">Kubernetes / EKS</span>
+          <span class="skill-tag purple hot">Helm</span>
+          <span class="skill-tag purple">Docker</span>
+          <span class="skill-tag purple">Karpenter</span>
+          <span class="skill-tag purple">Cluster Autoscaler</span>
+          <span class="skill-tag purple">Ingress (NGINX)</span>
+          <span class="skill-tag purple">HPA / VPA</span>
+          <span class="skill-tag purple">Pod Disruption Budgets</span>
+          <span class="skill-tag purple">Namespaces &amp; RBAC</span>
+          <span class="skill-tag purple">Multi-tenant Clusters</span>
+          <span class="skill-tag purple">GitOps (ArgoCD)</span>
+          <span class="skill-tag purple">Internal Dev Platform</span>
         </div>
       </div>
 
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">⚙️</div>
-        <div class="skill-cat-title">Infrastructure as Code</div>
+      <div class="skill-cat cat-sre reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">📡</span><span class="skill-cat-title">SRE &amp; Reliability</span></div>
         <div>
-          <span class="skill-tag">Terraform</span><span class="skill-tag">Ansible</span>
-          <span class="skill-tag">CloudFormation</span>
+          <span class="skill-tag hot">SLI / SLO / SLA</span>
+          <span class="skill-tag hot">Incident Management</span>
+          <span class="skill-tag hot">Root Cause Analysis</span>
+          <span class="skill-tag">Runbook Automation</span>
+          <span class="skill-tag">Error Budgets</span>
+          <span class="skill-tag">On-Call &amp; Alerting</span>
+          <span class="skill-tag">Post-Mortems</span>
+          <span class="skill-tag">MTTR Reduction</span>
+          <span class="skill-tag">Capacity Planning</span>
+          <span class="skill-tag">Disaster Recovery</span>
+          <span class="skill-tag">99.99% Uptime</span>
+          <span class="skill-tag">Chaos Engineering</span>
         </div>
       </div>
 
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">🔄</div>
-        <div class="skill-cat-title">CI/CD & Version Control</div>
+      <div class="skill-cat cat-iac reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">⚙️</span><span class="skill-cat-title">Infrastructure as Code</span></div>
         <div>
-          <span class="skill-tag">GitHub Actions</span><span class="skill-tag">Git</span>
-          <span class="skill-tag">GitHub Workflows</span><span class="skill-tag">AWS CodePipeline</span>
-          <span class="skill-tag">Pull Requests</span><span class="skill-tag">Branching</span>
+          <span class="skill-tag hot">Terraform</span><span class="skill-tag">Ansible</span>
+          <span class="skill-tag">CloudFormation</span><span class="skill-tag">Terraform Modules</span>
+          <span class="skill-tag">Remote State</span><span class="skill-tag">Workspaces</span>
+          <span class="skill-tag">Terragrunt</span>
         </div>
       </div>
 
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">📊</div>
-        <div class="skill-cat-title">Monitoring & Observability</div>
+      <div class="skill-cat cat-cicd reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🔄</span><span class="skill-cat-title">CI/CD &amp; Version Control</span></div>
         <div>
-          <span class="skill-tag">Grafana</span><span class="skill-tag">Prometheus</span>
+          <span class="skill-tag hot">GitHub Actions</span><span class="skill-tag hot">Helm Pipelines</span>
+          <span class="skill-tag">Git</span><span class="skill-tag">AWS CodePipeline</span>
+          <span class="skill-tag">Blue/Green Deploys</span><span class="skill-tag">Canary Releases</span>
+          <span class="skill-tag">ArgoCD GitOps</span><span class="skill-tag">SonarQube</span>
+        </div>
+      </div>
+
+      <div class="skill-cat cat-monitor reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">📊</span><span class="skill-cat-title">Monitoring &amp; Observability</span></div>
+        <div>
+          <span class="skill-tag hot">Prometheus</span><span class="skill-tag hot">Grafana</span>
           <span class="skill-tag">CloudWatch</span><span class="skill-tag">CloudTrail</span>
-          <span class="skill-tag">Dynatrace</span>
+          <span class="skill-tag">Dynatrace</span><span class="skill-tag">Alertmanager</span>
+          <span class="skill-tag">Log Aggregation</span><span class="skill-tag">Distributed Tracing</span>
+          <span class="skill-tag">Dashboard Design</span>
         </div>
       </div>
 
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">💻</div>
-        <div class="skill-cat-title">Scripting & Automation</div>
+      <div class="skill-cat cat-script reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">💻</span><span class="skill-cat-title">Scripting &amp; Automation</span></div>
         <div>
-          <span class="skill-tag">Python</span><span class="skill-tag">Bash / Shell</span>
+          <span class="skill-tag hot">Python</span><span class="skill-tag hot">Bash / Shell</span>
           <span class="skill-tag">PowerShell</span><span class="skill-tag">AWS CLI</span>
-          <span class="skill-tag">kubectl</span>
+          <span class="skill-tag">kubectl</span><span class="skill-tag">Cron Jobs</span>
+          <span class="skill-tag">Infra Automation</span><span class="skill-tag">Data Analysis</span>
         </div>
       </div>
 
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">🔐</div>
-        <div class="skill-cat-title">Networking & Security</div>
+      <div class="skill-cat cat-security reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🔐</span><span class="skill-cat-title">Networking &amp; Security</span></div>
         <div>
           <span class="skill-tag">VPC Design</span><span class="skill-tag">Security Groups</span>
-          <span class="skill-tag">IAM Policies</span><span class="skill-tag">AWS WAF</span>
-          <span class="skill-tag">SSL / TLS</span>
+          <span class="skill-tag hot">IAM Policies &amp; Roles</span><span class="skill-tag">AWS WAF</span>
+          <span class="skill-tag">SSL / TLS</span><span class="skill-tag">Zero Trust</span>
+          <span class="skill-tag">Secrets Manager</span><span class="skill-tag">Network ACLs</span>
+          <span class="skill-tag">VPN &amp; Peering</span>
         </div>
       </div>
 
-      <div class="skill-cat reveal">
-        <div class="skill-cat-icon">🐧</div>
-        <div class="skill-cat-title">OS & Additional Tools</div>
+      <div class="skill-cat cat-os reveal">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🐧</span><span class="skill-cat-title">OS &amp; Additional Tools</span></div>
         <div>
-          <span class="skill-tag">Linux (RHEL/Ubuntu)</span><span class="skill-tag">NGINX</span>
-          <span class="skill-tag">SonarQube</span><span class="skill-tag">Disaster Recovery</span>
-          <span class="skill-tag">Backup Solutions</span>
+          <span class="skill-tag">Linux (RHEL / Ubuntu)</span><span class="skill-tag">NGINX</span>
+          <span class="skill-tag">SonarQube</span><span class="skill-tag">Backup Solutions</span>
+          <span class="skill-tag">Cost Optimization</span><span class="skill-tag">EC2 Rightsizing</span>
+          <span class="skill-tag">S3 Lifecycle Rules</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
